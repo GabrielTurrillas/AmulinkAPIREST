@@ -8,7 +8,6 @@ from rest_framework import status
 
 
 class ListPerfilTerapeuta(ListAPIView):
-    """ Para el admin """
     serializer_class = PerfilTerapeutaSerializer
     queryset = PerfilTerapeuta.objects.all()
     permission_classes = [IsAdminUser]

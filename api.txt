@@ -1,0 +1,71 @@
+[PAUTA]
+1- Usar show, list, retrieve, create, update, destroy para nombrar
+   uris y views
+2- Usar nombres en singular a menos que loa registros guarden listas
+3- Cuando se cambie una uri o view poner comentada la antigua para
+   acer los cambios en el lado del cliente
+4- Tranformar todas las clases a funciones
+5- Quitar /admin de las uri
+6- Cada funcion debe tener un unico proposito, separar las funciones que
+   cumplan mas de una tarea
+7- Primero va la accion y despues el nombre ej: listNombre
+8- El orden decendente de las views y urls es el siguiente:
+   list, retrieve, create, update, destroy, show.  
+9- Probar todos los endpoints con postman.
+
+
+api/
+    /paciente
+        /listPaciente [GET]
+            "(admin) Lista todos los pacientes de lista paciente"
+        /retrievePaciente/<int:pk> [GET]
+            "(user) Devuelve una instancia de paciente"
+        /createPaciente [POST]
+            "(admin) Crea una instancia de paciente"
+        /updatePaciente/<int:pk> [PUT]
+            "(admin) modifica una instancia de paciente"
+        /listTerapeutaPaciente/<int:pk> [GET]
+            "(user) Lista todos los pacientes del usuario consultante"
+    /terapia
+        /<int:pk> [GET]
+            *(usuario) Devuelve una instancia de terapia*
+        /admin
+            /create_terapia [POST]
+                *(usuario) Crea instancia de terapia*
+            /put_terapia/<int:pk> [PUT]
+                *(admin) Modifica instancia de terapia*
+        /sesion
+            /<int:pk> [GET, POST] 
+                *(usuario) devuelve lista de la tabla sesion, crea instancia de sesion*
+            /sesion_detalle/<int:pk> [GET]
+                *(usuario) devuelve instancia de sesion*
+            /contar_sesiones_mes [GET]
+                *(usuario) devuelve el numero de sesiones de la cuenta consultante de el mes actual*
+            /put_sesion/<int:pk> [PUT]
+                *(usuario) modifica instancia de sesion*
+    /terapeuta
+        / [GET]
+            *(admin) devuelve un listado de la tabla perfil*
+        /perfil [GET]
+            *(usuario) devuelve perfil de la cuenta consultante*
+        /modificar_perfil [PUT]
+            *(usuario) modifica perfil de la cuenta consultante*
+        /admin
+            /perfiles [GET]
+                *(admin) devuelve un listado de la tabla PerfilTerapeuta*
+    /informes
+        /numeroHorasMes [GET]
+            *(usuario) Numero de horas atendidas en un mes*
+        /numeroPacientes [GET]
+            *(usuario) Cantidad de pacientes totales*
+        /numeroSesionesMensuales/<int:mes>/<int:año> [GET]
+            *(admin) Numero de sesiones menusales totales*
+        /numeroPacientesActivosView [GET]
+            *(admin) Cantidad de pacientes activos* [GET]
+        /numeroSesionesAnualesView/<str:prevision>/<int:terapeuta>/<int:año> [GET]
+            *(admin) 
+
+
+
+
+    

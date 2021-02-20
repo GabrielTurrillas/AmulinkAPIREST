@@ -20,7 +20,7 @@ pagina resumen mensual (sitio terapeuta)
 
 @api_view(['GET',])
 def numeroHorasMesView(request):
-    """ numero de horas atendidas por mes(preguntar si 1 sesion=1hora) """
+    """ numero de horas atendidas por mes """
     try:
         sesionCurrentMonthCount = Sesion.objects.filter(terapia__userAccount=request.user, fechaSesion__gte=datetime.datetime.today().replace(day=1, hour=0, minute=0, second=0, microsecond=0)).count()
     except sesionCurrentMonthCount.DoesNotExist:
