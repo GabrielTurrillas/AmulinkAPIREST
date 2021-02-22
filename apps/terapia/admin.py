@@ -6,7 +6,7 @@ class TerapiaAdmin(admin.ModelAdmin):
     list_per_page = 25
 
 class SesionAdmin(admin.ModelAdmin):
-    list_display = ('terapia', 'asistio', 'fechaSesion')
+    list_display = ('id', 'terapia')
     list_per_page = 25
     
 
