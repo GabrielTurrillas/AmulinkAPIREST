@@ -2,11 +2,11 @@ from django.urls import path
 from .views import  listPacienteView, retrievePacienteView, createPacienteView, updatePacienteView, listTerapeutaPacienteView
 
 urlpatterns = [
-    path('listPaciente', listPacienteView), # [TESTEADO CON POSTMAN]
-    path('retrievePaciente/<int:pk>', retrievePacienteView), # [TESTEADO CON POSTMAN]
-    path('createPaciente', createPacienteView), # [TESTEADO CON POSTMAN]
-    path('updatePaciente/<int:pk>', updatePacienteView), # [TESTEADO CON POSTMAN]
-    path('listTerapeutaPaciente', listTerapeutaPacienteView), # [TESTEADO CON POSTMAN]
+    path('listPaciente', listPacienteView),                     # [TESTEADO CON POSTMAN]
+    path('retrievePaciente/<int:pk>', retrievePacienteView),    # [TESTEADO CON POSTMAN]
+    path('createPaciente', createPacienteView),                 # [TESTEADO CON POSTMAN]
+    path('updatePaciente/<int:pk>', updatePacienteView),        # [TESTEADO CON POSTMAN]
+    path('listTerapeutaPaciente', listTerapeutaPacienteView),   # [TESTEADO CON POSTMAN]
 ]
 
 # path('admin/<int:pk>', PacienteAdminView.as_view()) REMPLAZADA

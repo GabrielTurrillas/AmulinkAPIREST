@@ -1,5 +1,5 @@
 [PAUTA]
-1- Usar show, list, retrieve, create, update, destroy para nombrar
+1- Usar list, retrieve, create, update, destroy, show para nombrar
    uris y views
 2- Usar nombres en singular a menos que loa registros guarden listas
 3- Cuando se cambie una uri o view poner comentada la antigua para
@@ -10,8 +10,10 @@
    cumplan mas de una tarea
 7- Primero va la accion y despues el nombre ej: listNombre
 8- El orden decendente de las views y urls es el siguiente:
-   list, retrieve, create, update, destroy, show.  
-9- Probar todos los endpoints con postman.
+   list, retrieve, create, update, destroy, show. 
+9- Utilizar nombres descriptivos en las pk de las views 
+10- en urls.py comentar los cambios realizados. ej: MODIFICADO de [nombreAntiguo] a [nombreNuevo]
+11- Probar todos los endpoints con postman.
 
 
 api/

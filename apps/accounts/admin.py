@@ -4,7 +4,7 @@ from .models import UserAccount
 # Register your models here.
 
 class UserAccountAdmin(admin.ModelAdmin):
-    list_display = ('email',)
+    list_display = ('id', 'email')
     list_per_page = 25
 
 admin.site.register(UserAccount, UserAccountAdmin)
