@@ -1,3 +1,4 @@
+from django.core.exceptions import ObjectDoesNotExist
 from .models import PerfilTerapeuta
 from .serializers import PerfilTerapeutaSerializer
 from rest_framework.generics import ListAPIView, RetrieveUpdateAPIView
@@ -6,15 +7,22 @@ from rest_framework.decorators import api_view, permission_classes
 from rest_framework.response import Response
 from rest_framework import status
 
+@api_view(['GET',])
+@permission_classes([IsAdminUser])
+def listPerfilTerapeutaView(request):
+    try:
+        perfilTerapeuta = PerfilTerapeuta.objects.all()
+    except ObjectDoesNotExist:
+        return Response(status=status.HTTP_404_NOT_FOUND)
+    
+    if request.method == 'GET':
+        serializer = PerfilTerapeutaSerializer(perfilTerapeuta, many=True)
+        return Response(serializer.data, status=status.HTTP_200_OK)
+    return Response(status=status.HTTP_405_METHOD_NOT_ALLOWED)
 
-class ListPerfilTerapeuta(ListAPIView):
-    serializer_class = PerfilTerapeutaSerializer
-    queryset = PerfilTerapeuta.objects.all()
-    permission_classes = [IsAdminUser]
 
-
-@api_view(['GET', ])
-def getPerfilTerapeutaView(request):
+@api_view(['GET',])
+def retrievePerfilTerapeutaView(request):
     try:
         perfilTerapeuta = PerfilTerapeuta.objects.get(userAccount=request.user)
     except perfilTerapeuta.DoesNotExist:
@@ -23,25 +31,11 @@ def getPerfilTerapeutaView(request):
     if request.method == 'GET':
         serializer = PerfilTerapeutaSerializer(perfilTerapeuta)
         return Response(serializer.data)
-
-
-@api_view(['GET', ])
-@permission_classes([IsAdminUser])
-def getPerfilTerapeutaListView(request):
-    try:
-        perfiles = PerfilTerapeuta.objects.all()
-    except perfiles.DoesNotExist:
-        return Response(status=status.HTTP_404_NOT_FOUND)
-    
-    if request.method == 'GET':
-        serializer = PerfilTerapeutaSerializer(perfiles, many=True)
-        return Response(serializer.data)
-
-
+    return Response(status=status.HTTP_405_METHOD_NOT_ALLOWED)
 
 
 @api_view(['PUT', ])
-def putPerfilTerapeutaView(request):
+def updatePerfilTerapeutaView(request):
     try:
         perfilTerapeuta = PerfilTerapeuta.objects.get(userAccount=request.user)
     except perfilTerapeuta.DoesNotExist:
@@ -49,12 +43,11 @@ def putPerfilTerapeutaView(request):
 
     if request.method == "PUT":
         serializer = PerfilTerapeutaSerializer(perfilTerapeuta, data=request.data)
-        data = {}
         if serializer.is_valid():
             serializer.save()
-            data["success"]= "update successful"
-            return Response(data=data)
+            return Response(serializer.data, status= status.HTTP_200_OK)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+    return Response(status=status.HTTP_405_METHOD_NOT_ALLOWED)
 
 
 

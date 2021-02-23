@@ -19,7 +19,7 @@
 api/
     /paciente
         /listPaciente [GET]
-            "(admin) Lista todos los pacientes de lista paciente"
+            "(admin) Lista todos las instancias de la tabla paciente"
         /retrievePaciente/<int:pk> [GET]
             "(user) Devuelve una instancia de paciente"
         /createPaciente [POST]
@@ -27,34 +27,40 @@ api/
         /updatePaciente/<int:pk> [PUT]
             "(admin) modifica una instancia de paciente"
         /listTerapeutaPaciente/<int:pk> [GET]
-            "(user) Lista todos los pacientes del usuario consultante"
+            "(user) Lista todos las instancias de paciente que pertenecen
+                    al usuario consultante"
     /terapia
-        /<int:pk> [GET]
-            *(usuario) Devuelve una instancia de terapia*
-        /admin
-            /create_terapia [POST]
-                *(usuario) Crea instancia de terapia*
-            /put_terapia/<int:pk> [PUT]
-                *(admin) Modifica instancia de terapia*
-        /sesion
-            /<int:pk> [GET, POST] 
-                *(usuario) devuelve lista de la tabla sesion, crea instancia de sesion*
-            /sesion_detalle/<int:pk> [GET]
-                *(usuario) devuelve instancia de sesion*
-            /contar_sesiones_mes [GET]
-                *(usuario) devuelve el numero de sesiones de la cuenta consultante de el mes actual*
-            /put_sesion/<int:pk> [PUT]
-                *(usuario) modifica instancia de sesion*
+        /listTerapia [GET]
+            "(admin) Devuelve todas las instancias de la tabla terapia"
+        /retrieveTerapia/<int:pk> [GET]
+            "(user) Devuelve una instancia de terapia"
+        /createTerapia [POST]
+            "(user) Crea una instancia de terapia"
+        /updateTerapia/<int:pkTerapia> [PUT]
+            "(admin) Modifica una instancia de terapia"
+        /listSesion [GET]
+            "(admin) Devuelv todas las instancias de la tabla sesion"
+        /listSesion/<int:pkPaciente> [GET]
+            "(user) Devuelve todas las instancias de sesion de un paciente"
+        /retrieveSesion/<int:pkSesion>
+            "(user) Devuelve una instancia de Sesion"
+        /createSesion [PUT]
+            "(user) Crea una instancia de sesion"
+        /updateSesion/<int:pkSesion> [PUT]
+            "(user) Modifica una instancia de sesion"
+        /showCountSesionesMonth [GET]
+            "(user) Muestra el numero de instancias de la tabla sesion
+                    que se registro el mes actual"
     /terapeuta
-        / [GET]
-            *(admin) devuelve un listado de la tabla perfil*
-        /perfil [GET]
-            *(usuario) devuelve perfil de la cuenta consultante*
-        /modificar_perfil [PUT]
-            *(usuario) modifica perfil de la cuenta consultante*
-        /admin
-            /perfiles [GET]
-                *(admin) devuelve un listado de la tabla PerfilTerapeuta*
+        /listPerfilTerapeuta [GET]
+            "(admin) Devuelve todas las instancias de la tabla
+                     PerfilTerapeuta"
+        /retrievePerfilTerapeuta [GET]
+            "(user) Devuelve la instancia que pertenece a la
+                    cuenta consultante"
+        /updatePerfilTerapeuta [PUT]
+            "(user) Modifica la instancia que pertenece a la
+                    cuenta consultante"
     /informes
         /numeroHorasMes [GET]
             *(usuario) Numero de horas atendidas en un mes*

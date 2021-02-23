@@ -1,9 +1,12 @@
 from django .urls import path
-from .views import ListPerfilTerapeuta, getPerfilTerapeutaView, putPerfilTerapeutaView, getPerfilTerapeutaListView
+from .views import listPerfilTerapeutaView, retrievePerfilTerapeutaView, updatePerfilTerapeutaView
 
 urlpatterns = [
-    path('', ListPerfilTerapeuta.as_view()),
-    path('perfil', getPerfilTerapeutaView),
-    path('admin/perfiles', getPerfilTerapeutaListView),
-    path('modificar_perfil', putPerfilTerapeutaView)
+    path('listPerfilTerapeuta', listPerfilTerapeutaView),           # [TESTEADO CON POSTMAN]
+    path('retrievePerfilTerapeuta', retrievePerfilTerapeutaView),   # [TESTEADO CON POSTMAN]
+    path('updatePerfilTerapeuta', updatePerfilTerapeutaView)        # [TESTEADO CON POSTMAN]
 ]
+
+# [MODIFICADO] de /admin/perfiles a listPerfilTerapeuta
+# [MODIFICADO] de modificar_perfil a updatePerfilTerapeuta
+# [MODIFICADO] de /perfil a retrievePerfilTerapeuta
