@@ -62,16 +62,18 @@ api/
             "(user) Modifica la instancia que pertenece a la
                     cuenta consultante"
     /informes
-        /numeroHorasMes [GET]
-            *(usuario) Numero de horas atendidas en un mes*
-        /numeroPacientes [GET]
-            *(usuario) Cantidad de pacientes totales*
-        /numeroSesionesMensuales/<int:mes>/<int:año> [GET]
-            *(admin) Numero de sesiones menusales totales*
-        /numeroPacientesActivosView [GET]
-            *(admin) Cantidad de pacientes activos* [GET]
-        /numeroSesionesAnualesView/<str:prevision>/<int:terapeuta>/<int:año> [GET]
-            *(admin) 
+        /showNumeroHorasMes [GET]
+            "(usuario) Numero de horas atendidas en un mes"
+        /showNumeroPacientes [GET]
+            "(usuario) Cantidad de pacientes totales"
+        /showNumeroSesionesMensuales/<int:mes>/<int:año> [GET]
+            "(admin) Numero de sesiones menusales totales"
+        /showNumeroPacientesActivos [GET]
+            "(admin) Cantidad de pacientes activos" [GET]
+        /showNumeroSesionesAnualesView/<str:prevision>/<int:terapeuta>/<int:año> [GET]
+            "(admin) Devuelve todas las sesiones de un tipo 
+                     de prevision para un terapeuta y año 
+                     determinado (para armar tabla) 
 
 
 
