@@ -25,10 +25,13 @@ BASE_DIR = Path(__file__).resolve(strict=True).parent.parent
 SECRET_KEY = 'eqegrmp#f)av*ise@39iigtd(w=&v#qd18ctv^(#7d%317!0t7'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = True 
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["amulink.tk"]
 
+CORS_ORIGIN_ALLOW_ALL = True
+
+CORS_ORIGIN_WHITELIST = []
 
 # Application definition
 
@@ -91,11 +94,11 @@ WSGI_APPLICATION = 'Amulink.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'amulink',
+        'NAME': 'postgres',
         'USER': 'postgres',
         'PASSWORD': 'Megagenial4233',
-        'HOST': 'localhost',
-        'PORT': '',
+        'HOST': 'amulinkdb.c1b7hsqswkyn.us-east-1.rds.amazonaws.com',
+        'PORT': '5432',
     }
 }
 
@@ -189,7 +192,6 @@ SIMPLE_JWT = {
    'REFRESH_TOKEN_LIFETIME': timedelta(days=1),
 }
 
-CORS_ORIGIN_ALLOW_ALL = True
 
 FILE_UPLOAD_PERMISSIONS=0o640
 

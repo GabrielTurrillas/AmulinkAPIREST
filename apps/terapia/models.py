@@ -6,8 +6,6 @@ class Terapia(models.Model):
     paciente = models.ForeignKey(Paciente, on_delete=models.CASCADE)
     userAccount = models.ForeignKey(UserAccount, on_delete=models.CASCADE)
     fechaInicio = models.DateTimeField(auto_now_add=True)
-    motivoConsulta = models.CharField(max_length=100, blank=True, null=True)
-    captacion = models.CharField(max_length=100, blank=True, null=True)
 
 
 class Sesion(models.Model):

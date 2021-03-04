@@ -19,6 +19,8 @@ class Paciente(models.Model):
     comunaResidencia = models.CharField(max_length=100) #hacerla con opciones
     ocupacionProfecion = models.CharField(max_length=50)
     prevision = models.CharField(max_length=30, blank=True, null=True, choices=prevision_choise)
+    motivoConsulta = models.CharField(max_length=30, blank=True, null=True)
+    captacion = models.CharField(max_length=30, blank=True, null=True)
     isActive = models.BooleanField(default=True)
     userAccount = models.ManyToManyField('accounts.UserAccount', through='terapia.Terapia')
 
