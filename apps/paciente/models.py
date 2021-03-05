@@ -21,6 +21,7 @@ class Paciente(models.Model):
     prevision = models.CharField(max_length=30, blank=True, null=True, choices=prevision_choise)
     motivoConsulta = models.CharField(max_length=30, blank=True, null=True)
     captacion = models.CharField(max_length=30, blank=True, null=True)
+    pagoDerivacion = models.BooleanField(default=False)
     isActive = models.BooleanField(default=True)
     userAccount = models.ManyToManyField('accounts.UserAccount', through='terapia.Terapia')
 
