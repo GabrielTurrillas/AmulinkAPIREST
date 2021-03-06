@@ -17,7 +17,6 @@ class Paciente(models.Model):
     genero = models.CharField(max_length=50)
     direccion = models.CharField(max_length=100)
     comunaResidencia = models.CharField(max_length=100) #hacerla con opciones
-    ocupacionProfecion = models.CharField(max_length=50)
     prevision = models.CharField(max_length=30, blank=True, null=True, choices=prevision_choise)
     motivoConsulta = models.CharField(max_length=30, blank=True, null=True)
     captacion = models.CharField(max_length=30, blank=True, null=True)
