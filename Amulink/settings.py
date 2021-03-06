@@ -25,7 +25,7 @@ BASE_DIR = Path(__file__).resolve(strict=True).parent.parent
 SECRET_KEY = 'eqegrmp#f)av*ise@39iigtd(w=&v#qd18ctv^(#7d%317!0t7'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True 
+DEBUG = False 
 
 ALLOWED_HOSTS = ["amulink.tk"]
 
