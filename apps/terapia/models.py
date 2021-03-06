@@ -9,11 +9,15 @@ class Terapia(models.Model):
 
 
 class Sesion(models.Model):
+    modalidad_choise = (
+        ('Presencial', 'Presencial'),
+        ('Online', 'Online'),
+    )
     terapia = models.ForeignKey(Terapia, on_delete=models.CASCADE)
     pago = models.BooleanField(default=False)
     asistio = models.BooleanField(default=False)
     fechaSesion = models.DateTimeField(blank=True, null=True)
-    modalidad = models.CharField(max_length=30, blank=True, null=True)
+    modalidad = models.CharField(max_length=30, blank=True, null=True, choices=modalidad_choise)
     notasSesion = models.TextField(blank=True, null=True)
     fechaPago = models.DateTimeField(blank=True, null=True)
 
