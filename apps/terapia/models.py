@@ -17,7 +17,7 @@ class Sesion(models.Model):
     pago = models.BooleanField(default=False)
     asistio = models.BooleanField(default=False)
     fechaSesion = models.DateTimeField(blank=True, null=True)
-    modalidad = models.CharField(max_length=30, blank=True, null=True, choises=modalidad_choice)
+    modalidad = models.CharField(max_length=30, blank=True, null=True, choices=modalidad_choice)
     notasSesion = models.TextField(blank=True, null=True)
     fechaPago = models.DateTimeField(blank=True, null=True)
 
