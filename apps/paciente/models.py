@@ -18,6 +18,7 @@ class Paciente(models.Model):
     direccion = models.CharField(max_length=100)
     comunaResidencia = models.CharField(max_length=100) #hacerla con opciones
     prevision = models.CharField(max_length=30, blank=True, null=True, choices=prevision_choise)
+    valorSesion = models.IntegerField(null=False)
     motivoConsulta = models.CharField(max_length=30, blank=True, null=True)
     captacion = models.CharField(max_length=30, blank=True, null=True)
     pagoDerivacion = models.BooleanField(default=False)
