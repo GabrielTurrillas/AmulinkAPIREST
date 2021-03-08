@@ -19,6 +19,7 @@ class Sesion(models.Model):
     fechaSesion = models.DateTimeField(blank=True, null=True)
     modalidad = models.CharField(max_length=30, blank=True, null=True, choices=modalidad_choice)
     notasSesion = models.TextField(blank=True, null=True)
+    emisionBoleta = models.BooleanField(default=False)
     fechaPago = models.DateTimeField(blank=True, null=True)
 
     class Meta:
