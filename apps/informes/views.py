@@ -6,7 +6,7 @@ from django.core.exceptions import ObjectDoesNotExist
 from rest_framework import status
 from rest_framework.response import Response
 from rest_framework.decorators import api_view, permission_classes
-from rest_framework.permissions import IsAdminUser
+from rest_framework.permissions import IsAdminUser, IsAuthenticated
 from ..terapia.models import Sesion
 from ..paciente.models import Paciente
 from ..terapeuta.models import PerfilTerapeuta
@@ -19,8 +19,8 @@ def showNumeroHorasMesView(request):
         return Response(status=status.HTTP_404_NOT_FOUND)
 
     if request.method == 'GET':
-        return Response(sesionCurrentMonthCount)
-
+        return Response(sesionCurrentMonthCount, status=status.HTTP_200_OK)
+    return Response(status=status.HTTP_405_METHOD_NOT_ALLOWED)
 
 
 @api_view(['GET',])
@@ -34,7 +34,7 @@ def showNumeroPacientesView(request):
     """ numero de instancias paciente del usuario consultante """
     if request.method == 'GET':
         numeroPacientes = Paciente.objects.filter(userAccount=request.user).count()
-        return Response(numeroPacientes)
+        return Response(numeroPacientes, status=status.HTTP_200_OK)
     return Response(status=status.HTTP_405_METHOD_NOT_ALLOWED)
 
 
@@ -46,7 +46,7 @@ def showNumeroSesionesMensualesView(request, mes, año):
     if request.method == 'GET':
         numeroSesionesMensuales = Sesion.objects.filter(fechaSesion__gte=datetime.date(año,mes,1),
                                                         fechaSesion__lte=datetime.date(año,mes,ultimoDiaMes)).count()
-        return Response(numeroSesionesMensuales)
+        return Response(numeroSesionesMensuales, status=status.HTTP_200_OK)
     return Response(status=status.HTTP_405_METHOD_NOT_ALLOWED)
     
 
@@ -56,9 +56,8 @@ def showNumeroSesionesMensualesView(request, mes, año):
 def showNumeroPacientesActivosView(request):
     """ cantidad de pacientes activos """
     numeroPacientesActivos = Paciente.objects.filter(isActive=True).count()
-    print(numeroPacientesActivos)
     if request.method == 'GET':
-        return Response(numeroPacientesActivos)
+        return Response(numeroPacientesActivos, status=status.HTTP_200_OK)
     return Response(status=status.HTTP_405_METHOD_NOT_ALLOWED)
 
 
@@ -76,7 +75,7 @@ def showNumeroSesionesAnualesView(request, prevision, terapeuta, año):
                                 fechaSesion__lte=datetime.date(año,mes,ultimoDiaMes),
                                 terapia__paciente__prevision=prevision,
                                 terapia__userAccount=terapeuta).count()
-        return sesiones
+        return Response(sesiones, status=status.HTTP_200_OK)
 
     if request.method == 'GET':
         diccionarioSesiones = {
@@ -95,25 +94,16 @@ def showNumeroSesionesAnualesView(request, prevision, terapeuta, año):
             'noviembre': get_sesiones(año, 11, prevision, terapeuta),
             'diciembre': get_sesiones(año, 12, prevision, terapeuta),
         }
-        return Response(diccionarioSesiones)
+        return Response(diccionarioSesiones, status=status.HTTP_200_OK)
     return Response(status=status.HTTP_405_METHOD_NOT_ALLOWED)
 
 
+@api_view(['GET',])
+@permission_classes(['IsAuthenticated'])
+def showNumeroSesionesPacienteView(request, pkPaciente):
+    nuemroSesiones = Sesion.objects.filter(terapia__paciente=pkPaciente).count()
+    if request.method == 'GET':
+        return Response(nuemroSesiones, status=status.HTTP_200_OK)
+    return Response(status=status.HTTP_405_METHOD_NOT_ALLOWED)
 
-"""
-finansas (admin) (como se realizan los pagos?)(como se debe calcular el pago? ¿por mes?)
-    pagos de equipo interno a centro
-    pagos de equipo externo a centro 
-    pago de derivaciones equipo interno
-    pago de derivaciones equipo externo
-    pago sesiones practicantes
-    atrasos
-"""
 
-"""
-area de operaciones
-    registro de cupos por terapeuta(semanales o mensuales)
-    panel de derivacion
-    pago y confirmacion de pago (terapeuta y administrador)
-    frecuencia sesion 
-"""
