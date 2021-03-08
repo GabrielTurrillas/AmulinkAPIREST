@@ -6,6 +6,7 @@ class Paciente(models.Model):
         ('Isapre', 'Isapre'),
         ('Fonasa', 'Fonasa'),
         ('Bajo Costo', 'Bajo Costo'),
+        ('Pasantia', 'Pasantia'),
     )
     rut = models.CharField(max_length=50)
     nombre = models.CharField(max_length=50)
