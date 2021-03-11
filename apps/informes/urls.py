@@ -1,5 +1,5 @@
 from django .urls import path
-from .views import showNumeroHorasMesView, showNumeroPacientesView, showNumeroSesionesMensualesView, showNumeroPacientesActivosView,showNumeroSesionesAnualesView, showNumeroSesionesPacienteView
+from .views import showNumeroHorasMesView, showNumeroPacientesView, showNumeroSesionesMensualesView, showNumeroPacientesActivosView,showNumeroSesionesAnualesView
 
 urlpatterns = [
     path('showNumeroHorasMes', showNumeroHorasMesView),    # [TESTEADO CON POSTMAN]                                                             
@@ -7,5 +7,4 @@ urlpatterns = [
     path('showNumeroSesionesMensuales/<int:mes>/<int:año>', showNumeroSesionesMensualesView), # [TESTEADO CON POSTMAN]
     path('showNumeroPacientesActivos', showNumeroPacientesActivosView), # [TESTEADO CON POSTMAN]
     path('showNumeroSesionesAnuales/<str:prevision>/<int:terapeuta>/<int:año>', showNumeroSesionesAnualesView), # [TESTEADO CON CLIENTE]
-    path('showNumeroSesionesPaciente/<int:pkPaciente>', showNumeroSesionesPacienteView), # [TESTEADO CON POSTMAN]
 ]
