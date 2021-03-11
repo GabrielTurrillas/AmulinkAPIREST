@@ -40,6 +40,8 @@ api/
             "(admin) Modifica una instancia de terapia"
         /listSesion [GET]
             "(admin) Devuelv todas las instancias de la tabla sesion"
+        /listSesionTerapeuta [GET]
+            "(user) devuelve todas las instancias de la tabla sesion del terapeuta consultante"
         /listSesion/<int:pkPaciente> [GET]
             "(user) Devuelve todas las instancias de sesion de un paciente"
         /retrieveSesion/<int:pkSesion>
@@ -73,8 +75,7 @@ api/
         /showNumeroSesionesAnualesView/<str:prevision>/<int:terapeuta>/<int:año> [GET]
             "(admin) Devuelve todas las sesiones de un tipo 
                      de prevision para un terapeuta y año 
-                     determinado (para armar tabla) 
-
+                     determinado (para armar tabla)
 
 
 

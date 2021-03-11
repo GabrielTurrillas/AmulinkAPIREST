@@ -1,5 +1,5 @@
 from django .urls import path
-from .views import listTerapiaView, retrieveTerapiaView, createTerapiaView, updateTerapiaView, listSesionAllView, listSesionView, retrieveSesionView, createSesionView, updateSesionView, showCountSesionesMonthView 
+from .views import listTerapiaView, retrieveTerapiaView, createTerapiaView, updateTerapiaView, listSesionAllView, listSesionView, listSesionTerapeutaView, retrieveSesionView, createSesionView, updateSesionView, showCountSesionesMonthView 
 
 urlpatterns = [
     path('listTerapia', listTerapiaView),                       # [TESTEADO CON POSTMAN]
@@ -7,6 +7,7 @@ urlpatterns = [
     path('createTerapia', createTerapiaView),                   # [TESTEADO CON POSTMAN]
     path('updateTerapia/<int:pkTerapia>', updateTerapiaView),   # [TESTEADO CON POSTMAN]
     path('listSesion',  listSesionAllView ),                    # [TESTEADO CON POSTMAN]
+    path('listSesionTerapeuta', listSesionTerapeutaView),
     path('listSesion/<int:pkPaciente>', listSesionView),        # [TESTEADO CON POSTMAN]
     path('retrieveSesion/<int:pkSesion>', retrieveSesionView),  # [TESTEADO CON POSTMAN]
     path('createSesion', createSesionView),                     # [TESTEADO CON POSTMAN]

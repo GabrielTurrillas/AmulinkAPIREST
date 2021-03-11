@@ -4,7 +4,7 @@ from django.http import Http404, HttpResponse
 from rest_framework import status
 from rest_framework.decorators import api_view, permission_classes
 from rest_framework.generics import ListCreateAPIView
-from rest_framework.permissions import IsAdminUser
+from rest_framework.permissions import IsAdminUser, IsAuthenticated
 from rest_framework.response import Response
 from rest_framework.views import APIView
 from ..paciente.models import Paciente
@@ -71,6 +71,20 @@ def updateTerapiaView(request, pkTerapia):
 def listSesionAllView(request):
     try:
         sesiones = Sesion.objects.all()
+    except ObjectDoesNotExist:
+        return Response(status=status.HTTP_404_NOT_FOUND)
+
+    if request.method == 'GET':
+        serializer = SesionSerializer(sesiones, many=True)
+        return Response(serializer.data)
+    return Response(status.HTTP_405_METHOD_NOT_ALLOWED)
+
+
+@api_view(['GET',])
+@permission_classes([IsAdminUser])
+def listSesionTerapeutaView(request):
+    try:
+        sesiones = Sesion.objects.filter(terapia__userAccount=request.user)
     except ObjectDoesNotExist:
         return Response(status=status.HTTP_404_NOT_FOUND)
 

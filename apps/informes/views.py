@@ -98,12 +98,4 @@ def showNumeroSesionesAnualesView(request, prevision, terapeuta, año):
     return Response(status=status.HTTP_405_METHOD_NOT_ALLOWED)
 
 
-@api_view(['GET',])
-@permission_classes([IsAuthenticated])
-def showNumeroSesionesPacienteView(request, pkPaciente):
-    nuemroSesiones = Sesion.objects.filter(terapia__paciente=pkPaciente).count()
-    if request.method == 'GET':
-        return Response(nuemroSesiones, status=status.HTTP_200_OK)
-    return Response(status=status.HTTP_405_METHOD_NOT_ALLOWED)
-
 
