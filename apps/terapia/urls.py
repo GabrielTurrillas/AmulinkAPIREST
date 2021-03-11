@@ -1,13 +1,14 @@
 from django .urls import path
-from .views import listTerapiaView, retrieveTerapiaView, createTerapiaView, updateTerapiaView, listSesionAllView, listSesionView, listSesionTerapeutaView, retrieveSesionView, createSesionView, updateSesionView, showCountSesionesMonthView 
+from .views import listTerapiaView, retrieveTerapiaView, createTerapiaView, updateTerapiaView, listSesionAllView, listSesionView, listSesionTerapeutaView, retrieveSesionView, createSesionView, updateSesionView, showCountSesionesMonthView, listTerapiaTerapeutaView 
 
 urlpatterns = [
     path('listTerapia', listTerapiaView),                       # [TESTEADO CON POSTMAN]
+    path('listTerapiaTerapeutaView', listTerapiaTerapeutaView), 
     path('retrieveTerapia/<int:pk>', retrieveTerapiaView),      # [TESTEADO CON POSTMAN]
     path('createTerapia', createTerapiaView),                   # [TESTEADO CON POSTMAN]
     path('updateTerapia/<int:pkTerapia>', updateTerapiaView),   # [TESTEADO CON POSTMAN]
     path('listSesion',  listSesionAllView ),                    # [TESTEADO CON POSTMAN]
-    path('listSesionTerapeuta', listSesionTerapeutaView),
+    path('listSesionTerapeuta', listSesionTerapeutaView),       # [TESTEADO CON POSTMAN]
     path('listSesion/<int:pkPaciente>', listSesionView),        # [TESTEADO CON POSTMAN]
     path('retrieveSesion/<int:pkSesion>', retrieveSesionView),  # [TESTEADO CON POSTMAN]
     path('createSesion', createSesionView),                     # [TESTEADO CON POSTMAN]

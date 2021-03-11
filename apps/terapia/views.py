@@ -27,6 +27,20 @@ def listTerapiaView(request):
 
 
 @api_view(['GET',])
+@permission_classes([IsAdminUser])
+def listTerapiaTerapeutaView(request):
+    try:
+        terapias = Terapia.objects.filter(userAccount=request.user)
+    except ObjectDoesNotExist:
+        return Response(status=status.HTTP_404_NOT_FOUND)
+    
+    if request.method == 'GET':
+        serializer = TerapiaSerializer(terapias, many=True)
+        return Response(serializer.data, status=status.HTTP_200_OK)
+    return Response(status.HTTP_405_METHOD_NOT_ALLOWED)
+ 
+
+@api_view(['GET',])
 def retrieveTerapiaView(request, pk): # MODIFICADO terapiaDetailView
     try:
         terapia = Terapia.objects.get(paciente=pk)
