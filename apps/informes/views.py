@@ -99,7 +99,7 @@ def showNumeroSesionesAnualesView(request, prevision, terapeuta, año):
 
 
 @api_view(['GET',])
-@permission_classes(['IsAuthenticated'])
+@permission_classes([IsAuthenticated])
 def showNumeroSesionesPacienteView(request, pkPaciente):
     nuemroSesiones = Sesion.objects.filter(terapia__paciente=pkPaciente).count()
     if request.method == 'GET':
