@@ -3,7 +3,7 @@
    uris y views
 2- Usar nombres en singular a menos que loa registros guarden listas
 3- Cuando se cambie una uri o view poner comentada la antigua para
-   acer los cambios en el lado del cliente
+   hacer los cambios en el lado del cliente
 4- Tranformar todas las clases a funciones
 5- Quitar /admin de las uri
 6- Cada funcion debe tener un unico proposito, separar las funciones que
@@ -32,6 +32,9 @@ api/
     /terapia
         /listTerapia [GET]
             "(admin) Devuelve todas las instancias de la tabla terapia"
+        /listTerapiaTerapeuta [GET]
+            "(user) Devuelve todas las instancias de terapia 
+                    pertenecientes al terapeuta consultante"
         /retrieveTerapia/<int:pk> [GET]
             "(user) Devuelve una instancia de terapia"
         /createTerapia [POST]

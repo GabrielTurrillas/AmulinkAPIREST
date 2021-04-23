@@ -3,7 +3,7 @@ from .views import listTerapiaView, retrieveTerapiaView, createTerapiaView, upda
 
 urlpatterns = [
     path('listTerapia', listTerapiaView),                       # [TESTEADO CON POSTMAN]
-    path('listTerapiaTerapeuta', listTerapiaTerapeutaView), 
+    path('listTerapiaTerapeuta', listTerapiaTerapeutaView),     # [TESTEADO CON POSTMAN]
     path('retrieveTerapia/<int:pk>', retrieveTerapiaView),      # [TESTEADO CON POSTMAN]
     path('createTerapia', createTerapiaView),                   # [TESTEADO CON POSTMAN]
     path('updateTerapia/<int:pkTerapia>', updateTerapiaView),   # [TESTEADO CON POSTMAN]

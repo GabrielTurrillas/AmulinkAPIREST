@@ -65,7 +65,6 @@ def showNumeroPacientesActivosView(request):
 @api_view(['GET',])
 @permission_classes([IsAdminUser])
 def showNumeroSesionesAnualesView(request, prevision, terapeuta, año):
-    """ numero de sesiones anuales totales por tipo de terapia """
     instanciaTerapeuta = PerfilTerapeuta.objects.get(pk=terapeuta)
     nombre = instanciaTerapeuta.nombre
     apellidoPaterno = instanciaTerapeuta.apellidoPaterno         

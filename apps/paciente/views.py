@@ -16,7 +16,7 @@ from .permissions import PermisoTerapiaPaciente
 # PacienteAdminView Clase eliminada
 
 @api_view(['GET',])
-@permission_classes([IsAdminUser]) 
+#@permission_classes([IsAdminUser])
 def listPacienteView(request): 
     try:
         pacientes = Paciente.objects.all()
