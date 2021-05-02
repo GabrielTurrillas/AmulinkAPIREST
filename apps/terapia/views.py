@@ -13,7 +13,6 @@ from .serializers import TerapiaSerializer, SesionSerializer
 from .models import Terapia, Sesion
 
 @api_view(['GET',])
-@permission_classes([IsAdminUser])
 def listTerapiaView(request):
     try:
         terapias = Terapia.objects.all()
