@@ -64,7 +64,6 @@ def createTerapiaView(request):
 
 
 @api_view(['PUT',])
-@permission_classes([IsAdminUser])
 def updateTerapiaView(request, pkTerapia):
     try:
         terapia = Terapia.objects.get(pk=pkTerapia)
